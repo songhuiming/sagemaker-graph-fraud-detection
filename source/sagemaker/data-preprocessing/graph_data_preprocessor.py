@@ -82,6 +82,7 @@ def get_test_users(users_df, relations_df, train_days):
 
 
 def extract_activity_features(rel_df):
+    rel_df.reset_index(inplace = True, drop = True)
     activity_features_size = 2 * 24
     time_fts = np.zeros((rel_df.shape[0], activity_features_size))
     rel_df['hr'] = rel_df['ms'].apply(lambda x: int(x//3.6e6))
